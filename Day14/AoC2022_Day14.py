@@ -6,6 +6,7 @@ with open('input.txt') as f:
 
 # Part 1
 
+# get all coordinates of rocks
 def get_lines_coords(scan_lines):
     all_linepoints = []
 
@@ -34,7 +35,7 @@ def get_lines_coords(scan_lines):
 
         all_linepoints.extend(linepoints)
 
-    return sorted(list(set(all_linepoints)))
+    return set(all_linepoints)
 
 
 rock_and_sand_coords = get_lines_coords(scan)
@@ -77,10 +78,11 @@ while True:
         case False:
             break
         case (x, y):
-            rock_and_sand_coords.append((x, y))
+            rock_and_sand_coords.add((x, y))
     sand_counter += 1
 
 print(f'{sand_counter} units of sand come to rest before sand starts flowing into the abyss below.')
+
 
 # Part 2
 
@@ -96,7 +98,7 @@ floor = lowest + 2
 
 # add floor
 for i in range(0, 1000):
-    rock_and_sand_coords.append((i, floor))
+    rock_and_sand_coords.add((i, floor))
 
 
 def move_sand_again():
@@ -131,7 +133,10 @@ while True:
         case None:
             break
         case (x, y):
-            rock_and_sand_coords.append((x, y))
+            rock_and_sand_coords.add((x, y))
 
 
 print(f'{sand_counter} units of sand come to rest.')
+
+
+#%%
